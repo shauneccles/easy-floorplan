@@ -1397,8 +1397,12 @@ let E = class extends I {
   static getStubConfig() {
     return {};
   }
-  /** Sections-view sizing (grid rows ≈ 56px): room for the 5:3 default canvas. */
-  static getGridOptions() {
+  /**
+   * Sections-view sizing (grid rows ≈ 56px): room for the 5:3 default canvas.
+   * An instance method — HA calls it on the card element (getConfigElement /
+   * getStubConfig are the static ones, called before any instance exists).
+   */
+  getGridOptions() {
     return { columns: 12, rows: 8, min_columns: 6, min_rows: 4 };
   }
   _isOn(e) {
